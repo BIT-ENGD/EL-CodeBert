@@ -19,15 +19,17 @@ train_df.columns = ["input_text", "target_text"]
 eval_df.columns = ["input_text", "target_text"]
 test_df.columns = ["input_text", "target_text"]
 
+
+MODEL_PATH="/data/linux/transformers/microsoft/codebert-base"
 # first fine-tune CodeBert
 classifier = CodeBertClassifier(
-        model_path='./codebert',
-        tokenizer_path='./codebert',
+        model_path=MODEL_PATH,
+        tokenizer_path=MODEL_PATH,
         max_len=256,
         n_classes=19,
         epochs=5,
         model_save_path='./save/code_codebert.pt',
-        batch_size=64,
+        batch_size=32,#64,
         learning_rate=2e-5
 )
 
